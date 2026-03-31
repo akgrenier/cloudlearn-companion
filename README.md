@@ -47,6 +47,23 @@ node dist/index.js
 - **Prometheus Master** — All Prometheus exercises
 - **Cloud Native Expert** — Complete all tracks
 
+## Deploy with kagent
+
+CloudLearn Companion integrates with [kagent](https://kagent.dev) — deploy it as a Kubernetes-native AI agent in seconds.
+
+```bash
+# Apply the MCP server resource
+kubectl apply -f kagent/mcpserver.yaml
+
+# Apply the CloudLearn tutor agent
+kubectl apply -f kagent/agent.yaml
+
+# Open kagent dashboard and start learning
+kagent dashboard
+```
+
+The `cloudlearn-tutor` agent uses all 8 CloudLearn tools and can guide users through Kubernetes, Istio, and Prometheus learning tracks interactively.
+
 ## Hackathon
 
 MCP Hack 26 — "Building Cool Agents" category
