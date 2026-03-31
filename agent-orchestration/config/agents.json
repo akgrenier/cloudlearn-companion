@@ -1,0 +1,47 @@
+{
+  "agents": [
+    {
+      "id": "coordinator",
+      "name": "Coordinator",
+      "role": "coordinator",
+      "description": "Manages workflow and distributes tasks to other agents",
+      "capabilities": ["task_distribution", "workflow_management", "progress_tracking"],
+      "maxConcurrentTasks": 5
+    },
+    {
+      "id": "researcher",
+      "name": "Researcher",
+      "role": "researcher",
+      "description": "Gathers information and performs data analysis",
+      "capabilities": ["web_search", "data_analysis", "source_verification"],
+      "maxConcurrentTasks": 3
+    },
+    {
+      "id": "writer",
+      "name": "Writer",
+      "role": "writer",
+      "description": "Creates and edits content based on research",
+      "capabilities": ["content_creation", "editing", "summarization"],
+      "maxConcurrentTasks": 2
+    },
+    {
+      "id": "reviewer",
+      "name": "Reviewer",
+      "role": "reviewer",
+      "description": "Quality assurance and feedback provider",
+      "capabilities": ["quality_check", "feedback", "improvement_suggestions"],
+      "maxConcurrentTasks": 4
+    }
+  ],
+  "workflows": {
+    "content_creation": {
+      "name": "Content Creation Pipeline",
+      "steps": [
+        { "agent": "researcher", "task": "research" },
+        { "agent": "writer", "task": "draft", "dependsOn": ["research"] },
+        { "agent": "reviewer", "task": "review", "dependsOn": ["draft"] },
+        { "agent": "writer", "task": "revise", "dependsOn": ["review"] }
+      ]
+    }
+  }
+}
